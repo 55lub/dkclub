@@ -2,190 +2,174 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<title>DmFirst - Clone</title>
+<title>DmFirst - Final Clone</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Arial, sans-serif}
-body{background:#000;color:#fff;overflow:hidden}
-.mobile{width:100%;max-width:420px;height:100vh;height:100dvh;background:#0a1712;position:relative;margin:0 auto;overflow:hidden;display:flex;flex-direction:column}
-.topHead{background:#0e0e0e;padding:10px 12px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #1a1a1a}
-.logo{color:#c9a86a;font-weight:900;font-size:20px;letter-spacing:1px;display:flex;align-items:center;gap:6px}
-.logo span{color:#d4b072}
-.greenHead{background:linear-gradient(180deg,#0fb07a 0%, #064e36 100%);padding:18px 14px}
-.greenHead h2{font-size:20px;font-weight:800}
-.greenHead p{font-size:13px;opacity:.9;margin-top:4px}
-.screen{display:none;flex:1;overflow-y:auto;overflow-x:hidden;padding-bottom:90px;background:#0a1712}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Inter,Arial,sans-serif}
+body{background:#000;color:#fff}
+.mobile{width:100%;max-width:430px;height:100vh;height:100dvh;background:#080f0d;margin:0 auto;position:relative;overflow:hidden;display:flex;flex-direction:column}
+.top{height:52px;background:#0f1e19;display:flex;justify-content:space-between;align-items:center;padding:0 10px;border-bottom:1px solid #1a2e26;flex-shrink:0}
+.logo{font-weight:900;color:#d4b072;display:flex;align-items:center;gap:6px;font-size:16px}
+.screen{display:none;flex:1;overflow-y:auto;padding-bottom:85px;background:#080f0d}
 .screen.active{display:block}
-.inputBox{background:#132a22;border-radius:12px;padding:12px 14px;display:flex;align-items:center;gap:10px;margin:10px 0;border:1px solid #1e3d32}
-.inputBox input{flex:1;background:transparent;border:none;outline:none;color:#d4b072;font-size:14px}
-.inputBox select{background:transparent;border:none;color:#fff;outline:none}
-.labelGold{color:#c9a86a;font-size:14px;font-weight:700;display:flex;align-items:center;gap:8px;margin:14px 0 6px 2px}
-.goldBtn{width:92%;margin:18px auto;display:block;background:linear-gradient(90deg,#d4b072,#b8914f);color:#fff;border:none;padding:15px;border-radius:30px;font-weight:900;font-size:16px;letter-spacing:1px}
-.lineGold{height:2px;background:linear-gradient(90deg,#d4b072,transparent);margin:12px 0}
+.greenHead{background:linear-gradient(180deg,#0ec68a,#0a5a3f);padding:18px 14px}
+.greenHead h2{font-size:20px;font-weight:900}
+.inputBox{background:#132a22;border-radius:12px;padding:12px 14px;display:flex;gap:10px;margin:8px 0;border:1px solid #1e3d32}
+.inputBox input{flex:1;background:transparent;border:none;outline:none;color:#e8c992}
+.label{color:#c9a86a;font-size:13px;font-weight:700;margin:12px 2px 4px 2px;display:flex;gap:6px}
+.goldBtn{width:92%;margin:16px auto;display:block;background:linear-gradient(90deg,#d4b072,#b8914f);border:none;padding:14px;border-radius:30px;font-weight:900;color:#000;font-size:15px}
 .tabRow{display:flex;border-bottom:1px solid #1e3d32}
-.tabRow div{flex:1;text-align:center;padding:12px;font-weight:800;color:#666;border-bottom:2px solid transparent;cursor:pointer}
+.tabRow div{flex:1;text-align:center;padding:12px 4px;font-weight:800;color:#5a7a6e;border-bottom:2px solid transparent;font-size:13px}
 .tabRow div.active{color:#d4b072;border-color:#d4b072}
-.homeTop{background:#0a1712;padding:8px}
-.bannerTop{background:linear-gradient(90deg,#00c853,#0a5a2e);border-radius:12px;padding:10px;display:flex;justify-content:space-between;align-items:center;margin:8px 0}
-.gridGames{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:10px 0}
-.gameIcon{background:#132a22;border-radius:12px;padding:8px;text-align:center;border:1px solid #1e3d32}
-.gameIcon img{width:100%;border-radius:8px}
-.agencyTop{background:linear-gradient(180deg,#0fb07a 0%, #0a1712 60%);padding:20px;text-align:center}
-.invBtn{background:linear-gradient(90deg,#d4b072,#b8914f);border:none;width:94%;margin:12px auto;padding:12px;border-radius:25px;font-weight:900;color:#000;display:block}
-.menuItem{background:#132a22;margin:8px 10px;border-radius:12px;padding:14px;display:flex;justify-content:space-between;align-items:center;border:1px solid #1e3d32;color:#d4b072}
-.accTop{background:linear-gradient(180deg,#0fb07a 0%, #0a1712 100%);padding:18px 14px;display:flex;gap:12px;align-items:center}
-.accAvatar{width:62px;height:62px;border-radius:50%;overflow:hidden;border:2px solid #d4b072}
-.accAvatar img{width:100%;height:100%;object-fit:cover}
-.totalBox{background:#132a22;margin:12px;border-radius:14px;padding:14px;border:1px solid #1e3d32}
-.fourRow{display:flex;justify-content:space-between;margin-top:12px}
-.fourItem{text-align:center;flex:1;color:#d4b072;font-size:12px}
-.bottomNav{position:absolute;bottom:0;left:0;width:100%;background:#0f2a22;display:flex;justify-content:space-around;padding:8px 0 6px 0;border-top:1px solid #1e3d32;z-index:99}
-.navItem{text-align:center;color:#6a8a7f;font-size:11px;flex:1}
+.welcomeBar{background:#111f1b;margin:8px 10px;padding:8px 10px;border-radius:8px;font-size:11px;color:#8aada0;display:flex;justify-content:space-between}
+.catTabs{display:flex;gap:10px;overflow-x:auto;padding:10px;scrollbar-width:none}
+.catTab{background:#1a2e26;min-width:58px;height:58px;border-radius:14px;display:flex;flex-direction:column;justify-content:center;align-items:center;font-size:10px;color:#7a9a8a;border:1px solid #243d34}
+.catTab.active{background:#1e3d32;color:#d4b072;border-color:#d4b072}
+.sectionHead{display:flex;justify-content:space-between;align-items:center;padding:10px 12px 6px 12px}
+.sectionHead b{color:#c9a86a;font-size:14px}
+.sectionHead span{color:#5a7a6e;font-size:11px}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;padding:0 10px}
+.gameCard{background:#111f1b;border-radius:12px;overflow:hidden;border:1px solid #1e3d32;text-align:center}
+.gameCard .imgBox{height:78px;display:flex;justify-content:center;align-items:center;font-size:12px;font-weight:900;color:#fff;position:relative;text-align:center;line-height:12px}
+.gameCard .name{font-size:8px;padding:4px 2px;color:#c9a86a;font-weight:700;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;background:#0f1e19}
+.filterRow{display:flex;gap:6px;padding:6px 10px;overflow-x:auto}
+.filterPill{padding:5px 10px;border-radius:15px;background:#1a2e26;font-size:10px;color:#7a9a8a;border:1px solid #243d34;white-space:nowrap}
+.filterPill.active{background:#00c853;color:#fff}
+.detailBtn{background:#1a2e26;border:1px solid #243d34;color:#c9c9c9;width:calc(100% - 20px);margin:8px 10px;padding:8px;border-radius:8px;font-size:12px}
+.bottomNav{position:absolute;bottom:0;left:0;width:100%;height:66px;background:#0f1e19;display:flex;justify-content:space-around;align-items:center;border-top:1px solid #1e3d32;z-index:99}
+.navItem{flex:1;text-align:center;color:#5a7a6e;font-size:10px}
 .navItem.active{color:#d4b072}
-.navCenter{width:66px;height:66px;background:linear-gradient(#ffcc33,#ff9900);border-radius:50%;margin:-32px auto 0 auto;display:flex;justify-content:center;align-items:center;font-size:30px;border:4px solid #0f2a22}
-.chatBot{position:absolute;bottom:88px;right:12px;width:52px;height:52px;background:#fff;border-radius:50%;display:flex;justify-content:center;align-items:center;font-size:28px;z-index:100;box-shadow:0 4px 12px #0008}
-.activityBanner{background:#132a22;border-radius:12px;margin:10px;padding:12px;border:1px solid #1e3d32}
+.navCenter{width:56px;height:56px;background:radial-gradient(#ffdd55,#ff8800);border-radius:50%;margin:-24px auto 2px auto;display:flex;justify-content:center;align-items:center;border:3px solid #0f1e19;font-size:26px}
+.agencyTop{background:linear-gradient(180deg,#0ec68a 0%, #080f0d 65%);padding:18px;text-align:center}
+.menuItem{background:#132a22;margin:7px 10px;border-radius:12px;padding:13px;display:flex;justify-content:space-between;color:#d4b072;border:1px solid #1e3d32;font-size:13px}
+.totalBox{background:#132a22;margin:10px;border-radius:14px;padding:14px;border:1px solid #1e3d32}
+.accTop{background:linear-gradient(180deg,#0ec68a,#080f0d);padding:16px;display:flex;gap:12px}
+.fourRow{display:flex;justify-content:space-between;margin-top:10px}
+.fourItem{text-align:center;flex:1;color:#d4b072;font-size:11px}
+.chatBot{position:absolute;bottom:74px;right:10px;width:48px;height:48px;background:#fff;border-radius:50%;display:flex;justify-content:center;align-items:center;z-index:100}
 </style>
 </head>
 <body>
 <div class="mobile">
-<div class="topHead"><span onclick="nav('login')" style="cursor:pointer">‹</span><div class="logo">💎 DmFirst</div><div style="display:flex;align-items:center;gap:4px">🇺🇸 EN</div></div>
+<div class="top" id="mainTop"><div class="logo">💠 DmFirst</div><div style="display:flex;gap:8px;align-items:center"><div style="background:#1c332b;color:#d4b072;padding:6px 10px;border-radius:20px;font-size:12px;font-weight:800;border:1px solid #2a4a3d">₹0.00 ➕</div><span>💬</span><span>⬇️</span></div></div>
 
-<!-- REGISTER SCREEN - PHOTO 1 -->
 <div id="registerScreen" class="screen active">
-<div class="greenHead"><h2>Register</h2><p>Please register by phone number or email</p></div>
-<div style="padding:14px">
-<div style="text-align:center;color:#d4b072;font-weight:800;margin:14px 0">📱 Register your phone</div>
-<div class="lineGold"></div>
-<div class="labelGold">📱 Phone number</div>
-<div style="display:flex;gap:8px"><div class="inputBox" style="width:90px"><select><option>+91</option></select></div><div class="inputBox" style="flex:1"><input id="regMobile" placeholder="Please enter the phone number"></div></div>
-<div class="labelGold">🔒 Set password</div><div class="inputBox"><input id="regPass" type="password" placeholder="Set password"><span>👁️‍🗨️</span></div>
-<div class="labelGold">🔒 Confirm password</div><div class="inputBox"><input id="regCpass" type="password" placeholder="Confirm password"><span>👁️‍🗨️</span></div>
-<div class="labelGold">👥 Invite code</div><div class="inputBox"><input id="regInvite" value="98186101965"></div>
-<div style="display:flex;align-items:center;gap:8px;margin:14px 0;font-size:12px"><div style="width:20px;height:20px;background:#d4b072;border-radius:50%;display:flex;justify-content:center;align-items:center">✓</div> I have read and agree <span style="color:#ff6b6b">[Privacy Agreement]</span></div>
-<button class="goldBtn" onclick="doRegister()">Register</button>
+<div class="greenHead"><h2>Register</h2><p style="font-size:12px;opacity:.9">Please register by phone number or email</p></div>
+<div style="padding:12px">
+<div style="text-align:center;color:#d4b072;font-weight:900;margin:12px">📱 Register your phone</div>
+<div style="height:2px;background:#d4b072;margin:10px 0"></div>
+<div class="label">📱 Phone number</div>
+<div style="display:flex;gap:8px"><div class="inputBox" style="width:85px"><select style="background:transparent;color:#fff;border:none"><option>+91</option></select></div><div class="inputBox" style="flex:1"><input id="rMob" placeholder="Please enter the phone number"></div></div>
+<div class="label">🔒 Set password</div><div class="inputBox"><input id="rPass" type="password" placeholder="Set password"> 👁️</div>
+<div class="label">🔒 Confirm password</div><div class="inputBox"><input id="rCpass" type="password" placeholder="Confirm password"> 👁️</div>
+<div class="label">👤 Invite code</div><div class="inputBox"><input id="rInv" value="98186101965"></div>
+<button class="goldBtn" onclick="nav('login')">Register</button>
+<p style="text-align:center;font-size:12px;color:#aaa;margin-top:8px" onclick="nav('login')">Already have account? <span style="color:#d4b072">Log in</span></p>
 </div>
-<div class="chatBot">🤖</div>
 </div>
 
-<!-- LOGIN SCREEN - PHOTO 2 -->
 <div id="loginScreen" class="screen">
-<div class="greenHead"><h2>Log in</h2><p>Please log in with your phone number or email<br>If you forget your password, please contact customer service</p></div>
-<div style="padding:14px">
-<div class="tabRow"><div class="active" id="tabPhone" onclick="switchTab('phone')">📱<br>Phone Number</div><div id="tabEmail" onclick="switchTab('email')">✉️<br>Email</div></div>
-<div class="labelGold">📱 Phone number</div>
-<div style="display:flex;gap:8px"><div class="inputBox" style="width:90px"><select><option>+91</option></select></div><div class="inputBox" style="flex:1"><input id="logMobile" placeholder="Please enter the phone number"></div></div>
-<div class="labelGold">🔒 Password</div><div class="inputBox"><input id="logPass" type="password" placeholder="Password"><span>👁️‍🗨️</span></div>
-<div style="display:flex;justify-content:space-between;font-size:12px;margin:12px 0;color:#aaa"><span>◯ Remember password</span><span style="color:#d4b072">Forgot password?</span></div>
-<button class="goldBtn" style="background:#6a8a7f" onclick="doLogin()">Log in</button>
+<div class="greenHead"><h2>Log in</h2><p style="font-size:11px">Please log in with your phone number or email</p></div>
+<div style="padding:12px">
+<div class="tabRow"><div class="active">📱 Phone Number</div><div>✉️ Email</div></div>
+<div class="label">📱 Phone number</div>
+<div style="display:flex;gap:8px"><div class="inputBox" style="width:85px"><select style="background:transparent;color:#fff;border:none"><option>+91</option></select></div><div class="inputBox" style="flex:1"><input placeholder="Please enter the phone number"></div></div>
+<div class="label">🔒 Password</div><div class="inputBox"><input type="password" placeholder="Password"> 👁️</div>
+<button class="goldBtn" style="background:#4a635b;color:#a0b8ad" onclick="nav('home')">Log in</button>
 <button class="goldBtn" style="background:transparent;border:1px solid #d4b072;color:#d4b072" onclick="nav('register')">Register</button>
 </div>
-<div class="chatBot">🤖</div>
 </div>
 
-<!-- HOME SCREEN - PHOTO 3 -->
 <div id="homeScreen" class="screen">
-<div class="homeTop">
-<div class="bannerTop"><span>Download DMFIRST APP AND GET ₹2 BONUS</span><span>⬇️</span></div>
-<div style="font-size:12px;color:#d4b072;margin:8px 0">Platform recommendation</div>
-<div style="display:flex;gap:6px"><span style="background:#132a22;padding:4px 8px;border-radius:10px;font-size:10px">Popular</span><span style="background:#132a22;padding:4px 8px;border-radius:10px;font-size:10px">Lottery</span></div>
-<div class="gridGames" id="homeGrid"></div>
+<div class="welcomeBar"><span>🔊 Welcome to the DmFirst Games!</span><span style="color:#d4b072">Detail ›</span></div>
+<div class="catTabs">
+<div class="catTab active">🔥<br>Popular</div><div class="catTab">🎲<br>Lottery</div><div class="catTab">🎮<br>Mini games</div><div class="catTab">🎰<br>Slots</div><div class="catTab">🎣<br>Fishing</div>
+</div>
+
+<div class="sectionHead"><b>Platform recommendation</b></div>
+<div class="grid4">
+<div class="gameCard"><div class="imgBox" style="background:linear-gradient(135deg,#1a1a1a,#ff0040)">AVIATOR</div><div class="name">AVIATOR</div></div>
+<div class="gameCard"><div class="imgBox" style="background:linear-gradient(135deg,#2a0845,#6441a5)">VORTEX</div><div class="name">VORTEX</div></div>
+<div class="gameCard"><div class="imgBox" style="background:linear-gradient(135deg,#ffcc00,#ff6600)">🐔 CHICKEN ROAD</div><div class="name">CHICKEN ROAD 1 BONUS</div></div>
+<div class="gameCard"><div class="imgBox" style="background:linear-gradient(135deg,#333,#000)">PUBG</div><div class="name">PUBG</div></div>
+</div>
+
+<div class="sectionHead"><b>Popular</b><span>View All ›</span></div>
+<div class="grid4">
+<div class="gameCard"><div class="imgBox" style="background:radial-gradient(#ffd700,#ff8c00)">FORTUNE GARUDA 500</div><div class="name">FORTUNE GARUDA 500</div></div>
+<div class="gameCard"><div class="imgBox" style="background:radial-gradient(#444,#000)">LUCKY JAGUAR 500</div><div class="name">LUCKY JAGUAR 500</div></div>
+<div class="gameCard"><div class="imgBox" style="background:linear-gradient(#00c853,#004d26)">MONEY COMING</div><div class="name">MONEY COMING</div></div>
+<div class="gameCard"><div class="imgBox" style="background:linear-gradient(#ff8a00,#ff0000)">FORTUNE</div><div class="name">FORTUNE</div></div>
+<div class="gameCard"><div class="imgBox" style="background:linear-gradient(#d4af37,#8B4513)">FORTUNE GEMS 2</div><div class="name">FORTUNE GEMS 2</div></div>
+<div class="gameCard"><div class="imgBox" style="background:linear-gradient(#8a2be2,#4b0082)">GEMS 3</div><div class="name">FORTUNE GEMS 3</div></div>
+<div class="gameCard"><div class="imgBox" style="background:linear-gradient(#ff4500,#8b0000)">PHOENIX LEGEND</div><div class="name">PHOENIX LEGEND</div></div>
+<div class="gameCard"><div class="imgBox" style="background:conic-gradient(#ff0000,#00ff00,#0000ff,#ff0000)">🎡</div><div class="name">WHEEL</div></div>
+</div>
+
+<div class="sectionHead"><b>Lottery</b><span>View All ›</span></div>
+<div class="grid4">
+<div class="gameCard"><div class="imgBox" style="background:radial-gradient(#ffcccc,#ff0000);color:#f00">8</div><div class="name">WINGO</div></div>
+<div class="gameCard"><div class="imgBox" style="background:#1a1a1a">🎲</div><div class="name">K3</div></div>
+<div class="gameCard"><div class="imgBox" style="background:linear-gradient(#a020f0,#6a0dad)">5D</div><div class="name">5D</div></div>
+<div class="gameCard"><div class="imgBox" style="background:linear-gradient(#00bfff,#0000ff)">Trx</div><div class="name">Trx Wingo</div></div>
+<div class="gameCard"><div class="imgBox" style="background:#222">🏍️ Moto Racing</div><div class="name">Moto Racing</div></div>
+</div>
+
+<div class="sectionHead"><b>Mini games</b><span>View All ›</span></div>
+<div class="grid4">
+<div class="gameCard"><div class="imgBox" style="background:#1a0000;color:#f00">Aviator</div><div class="name">AVIATOR</div></div>
+<div class="gameCard"><div class="imgBox" style="background:#1a0000;color:#f00">Aviator</div><div class="name">AVIATOR</div></div>
+<div class="gameCard"><div class="imgBox" style="background:#004d26">CRICKET</div><div class="name">CRICKET</div></div>
+<div class="gameCard"><div class="imgBox" style="background:linear-gradient(#00ffcc,#0088ff)">GoRush</div><div class="name">GO RUSH</div></div>
+<div class="gameCard"><div class="imgBox" style="background:#001a33">LIMBO</div><div class="name">LIMBO</div></div>
+<div class="gameCard"><div class="imgBox" style="background:radial-gradient(#ffcc00,#ff6600)">MINES</div><div class="name">MINES</div></div>
+<div class="gameCard"><div class="imgBox" style="background:#1a2a4a">MINES</div><div class="name">MINES</div></div>
+<div class="gameCard"><div class="imgBox" style="background:#0a1a5a">LIMBO</div><div class="name">LIMBO</div></div>
+</div>
+
+<div class="sectionHead"><b>Slots</b></div>
+<div style="display:flex;gap:6px;padding:6px 10px"><div style="padding:5px 10px;border-radius:15px;background:#00c853;color:#fff;font-size:10px">JILI</div><div style="padding:5px 10px;border-radius:15px;background:#1a2e26;color:#7a9a8a;font-size:10px">JDB</div><div style="padding:5px 10px;border-radius:15px;background:#1a2e26;color:#7a9a8a;font-size:10px">PG</div><div style="padding:5px 10px;border-radius:15px;background:#1a2e26;color:#7a9a8a;font-size:10px">CQ9</div></div>
+<div class="grid4">
+<div class="gameCard"><div class="imgBox" style="background:radial-gradient(#ffd700,#8B4513)">GARUDA 500</div><div class="name">FORTUNE GARUDA 500</div></div>
+<div class="gameCard"><div class="imgBox" style="background:#1a1a1a">GoRush</div><div class="name">GO RUSH</div></div>
+<div class="gameCard"><div class="imgBox" style="background:#222">LUCKY 500</div><div class="name">LUCKY JAGUAR 500</div></div>
+<div class="gameCard"><div class="imgBox" style="background:#004d26">MONEY COMING</div><div class="name">MONEY COMING</div></div>
+<div class="gameCard"><div class="imgBox" style="background:#002200">MINES</div><div class="name">MINES</div></div>
+<div class="gameCard"><div class="imgBox" style="background:#d4af37">GEMS 2</div><div class="name">FORTUNE GEMS 2</div></div>
+<div class="gameCard"><div class="imgBox" style="background:#4b0082">GEMS 3</div><div class="name">FORTUNE GEMS 3</div></div>
+<div class="gameCard"><div class="imgBox" style="background:#8B4513">500</div><div class="name">FORTUNE 500</div></div>
+</div>
+<button style="background:#1a2e26;border:1px solid #243d34;color:#c9c9c9;width:calc(100% - 20px);margin:8px 10px;padding:8px;border-radius:8px;font-size:12px">Detail</button>
+
+<div class="sectionHead"><b>Fishing</b><span>View All ›</span></div>
+<div class="grid4">
+<div class="gameCard"><div class="imgBox" style="background:#001a33">JACKPOT FISHING</div><div class="name">JACKPOT FISHING</div></div>
+<div class="gameCard"><div class="imgBox" style="background:#330000">DRAGON MASTER</div><div class="name">DRAGON MASTER</div></div>
+<div class="gameCard"><div class="imgBox" style="background:#003300">ONE SHOT FISHING</div><div class="name">ONE SHOT FISHING</div></div>
+<div class="gameCard"><div class="imgBox" style="background:#4d2600">HAPPY FISHING</div><div class="name">HAPPY FISHING</div></div>
 </div>
 <div class="chatBot">🤖</div>
 </div>
 
-<!-- ACTIVITY SCREEN - PHOTO 4 -->
-<div id="activityScreen" class="screen">
-<div style="padding:10px">
-<div style="display:flex;justify-content:space-between;background:#132a22;border-radius:12px;padding:10px"><span>Today's bonus ₹0.00</span><span>Total bonus ₹0.00</span></div>
-<div class="activityBanner">🎁 AGENT REFERRAL BONUS FOR NEW PLAYERS</div>
-<div class="activityBanner">📥 Download DMFIRST APP FREE ₹28 BONUS</div>
-<div class="activityBanner">💰 LUCKY 10 DAYS ₹308,888 REWARDS</div>
-<div class="activityBanner">👥 INVITE FRIENDS TO JOIN CLAIM UP TO ₹2,000,000</div>
-<div class="activityBanner">🎯 REFERRAL Super Bonuses</div>
-<div class="activityBanner">🏆 MISSION BONUS COMPLETE DAILY / WEEKLY TASK</div>
-<div class="activityBanner">🔥 WINSTREAK BONUS UP TO 100% WIN GO</div>
-<div class="activityBanner">🎁 RANDOM BONUS MYSTERIOUS GIFT</div>
-<div class="activityBanner">💵 FIRST DEPOSIT UP TO ₹10,000 BONUS</div>
-</div>
-</div>
-
-<!-- PROMOTION / AGENCY SCREEN - PHOTO 5 -->
-<div id="promotionScreen" class="screen">
-<div class="agencyTop"><h1 id="agencyCommission" style="font-size:36px">0</h1><div style="background:#111;color:#d4b072;display:inline-block;padding:4px 12px;border-radius:15px;font-size:12px;margin-top:6px">Yesterday's total commission</div><p style="font-size:10px;margin-top:6px;color:#aaa">Upgrade the level to increase commission income</p>
-<div style="background:#132a22;border-radius:14px;padding:12px;display:flex;margin-top:12px;border:1px solid #1e3d32"><div style="flex:1;text-align:center"><div style="color:#d4b072;font-size:12px">Direct subordinates</div><div style="color:#fff">0<br><span style="font-size:10px;color:#aaa">Number of register</span></div><div style="color:#00c853">0<br><span style="font-size:10px;color:#aaa">Deposit number</span></div></div><div style="flex:1;text-align:center;border-left:1px solid #1e3d32"><div style="color:#d4b072;font-size:12px">Team subordinates</div><div>0<br><span style="font-size:10px;color:#aaa">Number of register</span></div></div></div>
-</div>
-<button class="invBtn">INVITATION LINK</button>
-<div class="menuItem" onclick="alert('Partner rewards')"><span>👤 Partner rewards</span><span>›</span></div>
-<div class="menuItem"><span>📋 Copy invitation code</span><span>766621985633 📋</span></div>
-<div class="menuItem"><span>📊 Subordinate data</span><span>›</span></div>
-<div class="menuItem"><span>💲 Commission detail</span><span>›</span></div>
-<div class="menuItem"><span>📜 Invitation rules</span><span>›</span></div>
-<div class="menuItem"><span>🎧 Agent line customer service</span><span>›</span></div>
-<div class="menuItem"><span>💰 Rebate ratio</span><span>›</span></div>
-</div>
-
-<!-- ACCOUNT SCREEN - PHOTO 6-7 -->
-<div id="accountScreen" class="screen">
-<div class="accTop"><div class="accAvatar"><img src="https://i.pravatar.cc/100?img=32"></div><div><div style="font-weight:900">MEMBERNNGHV0LY <span style="background:#333;padding:2px 6px;border-radius:8px;font-size:10px">VIP0</span></div><div style="background:#ff9a1a;padding:3px 8px;border-radius:12px;font-size:12px;display:inline-block;margin-top:4px">UID | 1985633 📋</div><div style="font-size:11px;color:#aaa;margin-top:4px">Last login: 2026-10-07 01:31:44</div></div></div>
-<div class="totalBox"><div style="display:flex;justify-content:space-between"><div><div style="color:#aaa;font-size:12px">Total balance</div><div style="font-size:20px;font-weight:900">₹<span id="accBal">0.00</span> ⟲</div></div><button style="background:#d4b072;border:none;padding:8px 14px;border-radius:20px;font-weight:800">Enter wallet</button></div><div class="fourRow"><div class="fourItem">🏦<br>ARWallet</div><div class="fourItem" onclick="openDeposit()">💰<br>Deposit</div><div class="fourItem">💳<br>Withdraw</div><div class="fourItem">🅥<br>VIP</div></div></div>
-<div class="totalBox" style="display:flex;justify-content:space-between;align-items:center"><div><div style="color:#d4b072;font-weight:800">Safe</div><div style="font-size:11px;color:#aaa">The daily interest rate is 0.1%, and the income is calculated once every 1 minutes.</div></div><div style="background:#ff9a1a;padding:4px 10px;border-radius:15px;font-size:12px">₹0.00 ›</div></div>
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:10px"><div class="totalBox" style="margin:0">📘 Game History<br><span style="font-size:11px;color:#aaa">My game history</span></div><div class="totalBox" style="margin:0">📗 Transaction<br><span style="font-size:11px;color:#aaa">My transaction history</span></div><div class="totalBox" style="margin:0">📕 Deposit<br><span style="font-size:11px;color:#aaa">My deposit history</span></div><div class="totalBox" style="margin:0">💼 Withdraw<br><span style="font-size:11px;color:#aaa">My withdraw history</span></div></div>
-<div class="menuItem"><span>🔔 Notification</span><span>›</span></div>
-<div class="menuItem"><span>🎁 Gifts</span><span>›</span></div>
-<div class="menuItem"><span>🎟️ My Top-Up Coupons</span><span>›</span></div>
-<div class="menuItem"><span>📊 Game statistics</span><span>›</span></div>
-<div class="menuItem"><span>🌐 Language</span><span>English ›</span></div>
-<div style="margin:14px"><div style="color:#d4b072;font-size:12px;margin-bottom:8px">Service center</div><div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;text-align:center;font-size:11px;color:#aaa"><div>⚙️<br>Settings</div><div>📝<br>Feedback</div><div>📢<br>Announcement</div><div>🎧<br>Customer Service</div><div>📖<br>Beginner's Guide</div><div>📦<br>About us</div></div></div>
-<button style="width:94%;margin:12px auto;display:block;background:transparent;border:1px solid #555;color:#aaa;padding:10px;border-radius:20px">⏻ Log out</button>
-<div class="chatBot">🤖</div>
-</div>
+<div id="activityScreen" class="screen"><div style="padding:10px"><div class="totalBox" style="display:flex;justify-content:space-between"><span>Today's bonus ₹0.00</span><span>Total ₹0.00</span></div><div class="totalBox">🎁 AGENT REFERRAL BONUS</div><div class="totalBox">📥 Download APP FREE ₹28</div></div></div>
+<div id="promotionScreen" class="screen"><div style="background:linear-gradient(180deg,#0ec68a,#080f0d);padding:18px;text-align:center"><h1>0</h1><p style="font-size:12px">Yesterday's total commission</p></div><button class="goldBtn">INVITATION LINK</button><div style="background:#132a22;margin:7px 10px;border-radius:12px;padding:13px;display:flex;justify-content:space-between;color:#d4b072;border:1px solid #1e3d32">📋 Copy invitation code <span>766621985633</span></div></div>
+<div id="accountScreen" class="screen"><div class="accTop"><div style="width:60px;height:60px;border-radius:50%;background:#ccc;overflow:hidden"><img src="https://i.pravatar.cc/100?img=32" style="width:100%"></div><div><div style="font-weight:900">MEMBERNNGHV0LY</div><div style="background:#ff9a1a;padding:2px 8px;border-radius:12px;font-size:11px;display:inline-block">UID | 1985633</div></div></div><div class="totalBox">Total balance ₹0.00</div></div>
 
 <div class="bottomNav" id="bottomNav">
-<div class="navItem" id="navHome" onclick="nav('home')">🏠<br>Home</div>
+<div class="navItem active" id="navHome" onclick="nav('home')">🏠<br>Home</div>
 <div class="navItem" id="navActivity" onclick="nav('activity')">🎁<br>Activity</div>
-<div class="navItem" style="flex:1.2"><div class="navCenter">🎡</div><div style="margin-top:4px">Get ₹500</div></div>
-<div class="navItem active" id="navPromotion" onclick="nav('promotion')">👥<br>Promotion</div>
+<div class="navItem"><div style="width:56px;height:56px;background:radial-gradient(#ffdd55,#ff8800);border-radius:50%;margin:-24px auto 2px auto;display:flex;justify-content:center;align-items:center;border:3px solid #0f1e19">🎡</div><div style="font-size:9px">Get ₹500</div></div>
+<div class="navItem" id="navPromotion" onclick="nav('promotion')">👥<br>Promotion</div>
 <div class="navItem" id="navAccount" onclick="nav('account')">👤<br>Account</div>
 </div>
 </div>
-
 <script>
-let users=JSON.parse(localStorage.getItem('dmUsers')||'[]');
-function nav(tab){
+function nav(t){
 document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
-document.getElementById(tab+'Screen').classList.add('active');
+document.getElementById(t+'Screen').classList.add('active');
 document.querySelectorAll('.navItem').forEach(n=>n.classList.remove('active'));
-let nid='nav'+tab.charAt(0).toUpperCase()+tab.slice(1);
-let el=document.getElementById(nid); if(el) el.classList.add('active');
-document.getElementById('bottomNav').style.display=(tab=='login'||tab=='register')?'none':'flex';
-}
-function switchTab(t){
-document.getElementById('tabPhone').classList.toggle('active',t=='phone');
-document.getElementById('tabEmail').classList.toggle('active',t=='email');
-}
-function doRegister(){
-let m=document.getElementById('regMobile').value.trim();
-let p=document.getElementById('regPass').value.trim();
-let cp=document.getElementById('regCpass').value.trim();
-if(m.length<10){alert('Phone number nakho');return}
-if(p!=cp){alert('Password same nathi');return}
-users.push({mobile:m,pass:p,uid:'1985633'}); localStorage.setItem('dmUsers',JSON.stringify(users));
-alert('Register Success - UID 1985633'); nav('login');
-}
-function doLogin(){
-let m=document.getElementById('logMobile').value.trim();
-let p=document.getElementById('logPass').value.trim();
-let u=users.find(x=>x.mobile==m && x.pass==p);
-if(!m && !p){ nav('home'); return; } // demo ke liye direct home
-if(!u && users.length>0){alert('Mobile ya password khotu');return}
-nav('home');
-}
-let grid=document.getElementById('homeGrid');
-if(grid){
-let names=['WinGo','TRX Win','5D Lotre','K3 Lotre','Slots','Fishing','Sports','Casino'];
-for(let i=0;i<16;i++){
-let d=document.createElement('div'); d.className='gameIcon'; d.innerHTML=`<div style="width:100%;height:50px;background:linear-gradient(135deg,#0a5a2e,#00c853);border-radius:8px;display:flex;justify-content:center;align-items:center">🎮</div><div style="font-size:10px;margin-top:4px">${names[i%8]}</div>`; grid.appendChild(d);
-}
+let el=document.getElementById('nav'+t.charAt(0).toUpperCase()+t.slice(1)); if(el) el.classList.add('active');
+document.getElementById('mainTop').style.display=(t=='login'||t=='register')?'none':'flex';
+document.getElementById('bottomNav').style.display=(t=='login'||t=='register')?'none':'flex';
 }
 nav('register');
 </script>
