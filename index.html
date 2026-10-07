@@ -1,17 +1,44 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DmFirst 100% Real Clone</title>
 <style>
-body{background:#000;margin:0}
-.mobile{max-width:420px;margin:0 auto;background:#080f0d}
-.grid-img{width:100%;display:block}
-.bottom{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:420px;height:60px;background:#0f1e19;display:flex;justify-content:space-around;align-items:center;color:#5a7a6e;font-size:10px;border-top:1px solid #1e3d32}
-</style></head>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#000;display:flex;justify-content:center;font-family:Arial}
+.phone{width:100%;max-width:420px;height:100vh;background:#080f0d;position:relative;overflow:hidden;display:flex;flex-direction:column}
+.screen{display:none;flex:1;overflow-y:auto;padding-bottom:68px;background:#080f0d}
+.screen.active{display:block}
+.screen img{width:100%;display:block}
+.bottom{position:absolute;bottom:0;left:0;width:100%;height:64px;background:#0c1f1a;display:flex;justify-content:space-around;align-items:center;border-top:1px solid #1e3d32}
+.nav{flex:1;text-align:center;color:#5a7a6e;font-size:10px;cursor:pointer;line-height:12px}
+.nav.active{color:#d4b072}
+.center{width:52px;height:52px;background:radial-gradient(#ffdd55,#ff8800);border-radius:50%;margin:-20px auto 2px;display:flex;justify-content:center;align-items:center;font-size:22px;border:3px solid #0c1f1a}
+</style>
+</head>
 <body>
-<div class="mobile">
-<div style="background:#0f1e19;color:#d4b072;padding:12px;font-weight:900;display:flex;justify-content:space-between">💠 DmFirst <span>₹0.00 ➕</span></div>
-<img class="grid-img" src="REPLACE_WITH_YOUR_IMAGE_URL">
-<div style="height:70px"></div>
+<div class="phone">
+<div id="s-home" class="screen active"><img src="home_small.jpg"></div>
+<div id="s-activity" class="screen"><img src="activity_small.jpg"></div>
+<div id="s-agency" class="screen"><img src="agency_small.jpg"></div>
+<div id="s-account" class="screen"><img src="account_small.jpg"></div>
+
+<div class="bottom">
+<div class="nav active" id="n-home" onclick="go('home')">🏠<br>Home</div>
+<div class="nav" id="n-activity" onclick="go('activity')">🎁<br>Activity</div>
+<div class="nav" onclick="go('home')"><div class="center">🎡</div>Get ₹500</div>
+<div class="nav" id="n-agency" onclick="go('agency')">👥<br>Promotion</div>
+<div class="nav" id="n-account" onclick="go('account')">👤<br>Account</div>
 </div>
-<div class="bottom"><div>🏠<br>Home</div><div>🎁<br>Activity</div><div>🎡<br>Get ₹500</div><div>👥<br>Promotion</div><div>👤<br>Account</div></div>
-</body></html>
+</div>
+
+<script>
+function go(t){
+document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+document.getElementById('s-'+t).classList.add('active');
+document.querySelectorAll('.nav').forEach(n=>n.classList.remove('active'));
+let el=document.getElementById('n-'+t); if(el) el.classList.add('active');
+}
+</script>
+</body>
+</html>
