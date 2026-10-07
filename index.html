@@ -7,33 +7,24 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
 body{background:#000;display:flex;justify-content:center}
-.phone{width:100%;max-width:400px;background:#07130f;min-height:100vh}
-.page{display:none;padding:15px}
+.phone{width:100%;max-width:400px;background:#07130f;min-height:100vh;position:relative}
+.page{display:none;padding:15px;min-height:100vh}
 .page.active{display:block}
 h2{color:gold;text-align:center;margin:20px 0}
 input{width:100%;height:50px;background:#11251f;border:1px solid #2a4a3f;border-radius:12px;color:#fff;padding:0 15px;margin:8px 0}
-.btn{width:100%;height:52px;background:gold;border:none;border-radius:30px;font-weight:900;font-size:17px;margin-top:12px}
-
-/* HOME BOX DESIGN */
+.btn{width:100%;height:52px;background:gold;border:none;border-radius:30px;font-weight:900;font-size:17px;margin-top:12px;cursor:pointer}
 .top{background:#0f261e;padding:12px;border-radius:12px;display:flex;justify-content:space-between;color:#fff;margin-bottom:15px;border:1px solid #234a3d}
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:15px;margin-top:10px}
-.game-card{
-height:130px;
-border-radius:20px;
-display:flex;
-flex-direction:column;
-align-items:center;
-justify-content:center;
-color:#fff;
-font-weight:900;
-font-size:18px;
-cursor:pointer;
-}
+.game-card{height:130px;border-radius:20px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;font-weight:900;font-size:18px;cursor:pointer}
 .game-card span{font-size:40px;margin-bottom:6px}
-#card1{background:linear-gradient(135deg,#ff5e00,#ff9a00);box-shadow:0 0 15px #ff5e0080}
-#card2{background:linear-gradient(135deg,#00c6ff,#0072ff);box-shadow:0 0 15px #00c6ff80}
-#card3{background:linear-gradient(135deg,#a100ff,#ff00c8);box-shadow:0 0 15px #a100ff80}
-#card4{background:linear-gradient(135deg,#00ff88,#00a651);box-shadow:0 0 15px #00ff8880}
+#card1{background:linear-gradient(135deg,#ff5e00,#ff9a00)}
+#card2{background:linear-gradient(135deg,#00c6ff,#0072ff)}
+#card3{background:linear-gradient(135deg,#a100ff,#ff00c8)}
+#card4{background:linear-gradient(135deg,#00ff88,#00a651)}
+/* JILI IFRAME PAGE */
+#jili-frame{width:100%;height:calc(100vh - 60px);border:none;background:#000}
+.back-bar{background:#0f261e;color:#fff;padding:12px;display:flex;justify-content:space-between;align-items:center}
+.back-bar b{color:gold}
 </style>
 </head>
 <body>
@@ -57,43 +48,62 @@ cursor:pointer;
 </div>
 
 <div id="p-home" class="page">
-<div class="top"><div id="uname">Hi Player</div><div>₹5000</div></div>
+<div class="top"><div id="uname">Hi Player</div><div>₹<b id="bal">5000</b></div></div>
 <h2 style="margin:10px 0">SELECT PROVIDER</h2>
 <div class="grid">
-<div class="game-card" id="card1" onclick="alert('LOTTERY khulyu')"><span>🎟️</span>LOTTERY</div>
-<div class="game-card" id="card2" onclick="alert('JILI khulyu')"><span>🎰</span>JILI</div>
-<div class="game-card" id="card3" onclick="alert('JDB khulyu')"><span>🎲</span>JDB</div>
-<div class="game-card" id="card4" onclick="alert('PG khulyu')"><span>🐯</span>PG</div>
+<div class="game-card" id="card1" onclick="alert('LOTTERY - Coming Soon')"><span>🎟️</span>LOTTERY</div>
+<div class="game-card" id="card2" onclick="openJili()"><span>🎰</span>JILI</div>
+<div class="game-card" id="card3" onclick="alert('JDB - Coming Soon')"><span>🎲</span>JDB</div>
+<div class="game-card" id="card4" onclick="alert('PG - Coming Soon')"><span>🐯</span>PG</div>
 </div>
 <button class="btn" style="background:#11251f;color:#fff;border:1px solid #333;margin-top:30px" onclick="show('login')">Logout</button>
+</div>
+
+<!-- JILI GAME PAGE -->
+<div id="p-jili" class="page" style="padding:0">
+<div class="back-bar">
+<div onclick="show('home')" style="cursor:pointer">← Back</div>
+<div>Balance: ₹<b id="bal2">5000</b> | JILI Wallet</div>
+</div>
+<iframe id="jili-frame" src=""></iframe>
 </div>
 
 </div>
 
 <script>
+let balance = 5000;
 function show(name){
 document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
 document.getElementById('p-'+name).classList.add('active');
 }
 function reg(){
-let n=document.getElementById('r1').value;
-let m=document.getElementById('r2').value;
-let p=document.getElementById('r3').value;
-if(!n||!m||!p){alert('Badhu lakho');return}
+let n=document.getElementById('r1').value.trim();
+let m=document.getElementById('r2').value.trim();
+let p=document.getElementById('r3').value.trim();
+if(!n||!m||!p){alert('Badhu bharo');return}
 localStorage.setItem('u',JSON.stringify({n,m,p}));
-alert('Register OK, have login karo');
+alert('Register Thai Gayu!');
 show('login');
 }
 function log(){
-let m=document.getElementById('l1').value;
-let p=document.getElementById('l2').value;
+let m=document.getElementById('l1').value.trim();
+let p=document.getElementById('l2').value.trim();
 let u=JSON.parse(localStorage.getItem('u')||'null');
-if(!u){alert('Pela register karo');show('reg');return}
+if(!u){alert('Pela Register Karo');show('reg');return}
 if(u.m==m && u.p==p){
 document.getElementById('uname').innerText='Hi, '+u.n;
+document.getElementById('bal').innerText=balance;
+document.getElementById('bal2').innerText=balance;
 show('home');
-}else{alert('Password khoto che');}
+}else{alert('Password Khoto Che');}
+}
+function openJili(){
+ // Paisa JILI ma transfer thaya
+ document.getElementById('bal').innerText=balance;
+ document.getElementById('bal2').innerText=balance;
+ document.getElementById('jili-frame').src="https://jiligames.com/";
+ show('jili');
 }
 </script>
 </body>
- </html>
+                                                        </html>
