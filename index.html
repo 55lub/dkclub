@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Final Games</title>
+<title>Final Games - Fixed</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
 body{background:#000;display:flex;justify-content:center}
@@ -21,10 +21,7 @@ input{width:100%;height:50px;background:#11251f;border:1px solid #2a4a3f;border-
 #card2{background:linear-gradient(135deg,#00c6ff,#0072ff)}
 #card3{background:linear-gradient(135deg,#a100ff,#ff00c8)}
 #card4{background:linear-gradient(135deg,#00ff88,#00a651)}
-/* JILI IFRAME PAGE */
-#jili-frame{width:100%;height:calc(100vh - 60px);border:none;background:#000}
-.back-bar{background:#0f261e;color:#fff;padding:12px;display:flex;justify-content:space-between;align-items:center}
-.back-bar b{color:gold}
+.notice{background:#11251f;border:1px solid #2a4a3f;padding:10px;border-radius:10px;color:#8aa89c;font-size:12px;text-align:center;margin-top:15px}
 </style>
 </head>
 <body>
@@ -36,7 +33,7 @@ input{width:100%;height:50px;background:#11251f;border:1px solid #2a4a3f;border-
 <input id="r2" placeholder="Mobile">
 <input id="r3" type="password" placeholder="Password">
 <button class="btn" onclick="reg()">REGISTER</button>
-<p style="color:#aaa;text-align:center;margin-top:15px;font-size:13px" onclick="show('login')">Login karvu che? <b style="color:gold">Login</b></p>
+<p style="color:#aaa;text-align:center;margin-top:15px;font-size:13px" onclick="show('login')">Login? <b style="color:gold">Login</b></p>
 </div>
 
 <div id="p-login" class="page">
@@ -44,28 +41,20 @@ input{width:100%;height:50px;background:#11251f;border:1px solid #2a4a3f;border-
 <input id="l1" placeholder="Mobile">
 <input id="l2" type="password" placeholder="Password">
 <button class="btn" onclick="log()">LOGIN</button>
-<p style="color:#aaa;text-align:center;margin-top:15px;font-size:13px" onclick="show('reg')">Account nathi? <b style="color:gold">Register</b></p>
+<p style="color:#aaa;text-align:center;margin-top:15px;font-size:13px" onclick="show('reg')">New? <b style="color:gold">Register</b></p>
 </div>
 
 <div id="p-home" class="page">
 <div class="top"><div id="uname">Hi Player</div><div>₹<b id="bal">5000</b></div></div>
 <h2 style="margin:10px 0">SELECT PROVIDER</h2>
 <div class="grid">
-<div class="game-card" id="card1" onclick="alert('LOTTERY - Coming Soon')"><span>🎟️</span>LOTTERY</div>
+<div class="game-card" id="card1"><span>🎟️</span>LOTTERY</div>
 <div class="game-card" id="card2" onclick="openJili()"><span>🎰</span>JILI</div>
-<div class="game-card" id="card3" onclick="alert('JDB - Coming Soon')"><span>🎲</span>JDB</div>
-<div class="game-card" id="card4" onclick="alert('PG - Coming Soon')"><span>🐯</span>PG</div>
+<div class="game-card" id="card3"><span>🎲</span>JDB</div>
+<div class="game-card" id="card4"><span>🐯</span>PG</div>
 </div>
-<button class="btn" style="background:#11251f;color:#fff;border:1px solid #333;margin-top:30px" onclick="show('login')">Logout</button>
-</div>
-
-<!-- JILI GAME PAGE -->
-<div id="p-jili" class="page" style="padding:0">
-<div class="back-bar">
-<div onclick="show('home')" style="cursor:pointer">← Back</div>
-<div>Balance: ₹<b id="bal2">5000</b> | JILI Wallet</div>
-</div>
-<iframe id="jili-frame" src=""></iframe>
+<div class="notice">JILI par click karo etle Balance JILI Wallet ma jase ane Game khul se</div>
+<button class="btn" style="background:#11251f;color:#fff;border:1px solid #333;margin-top:20px" onclick="show('login')">Logout</button>
 </div>
 
 </div>
@@ -82,28 +71,30 @@ let m=document.getElementById('r2').value.trim();
 let p=document.getElementById('r3').value.trim();
 if(!n||!m||!p){alert('Badhu bharo');return}
 localStorage.setItem('u',JSON.stringify({n,m,p}));
-alert('Register Thai Gayu!');
-show('login');
+alert('Register OK');show('login');
 }
 function log(){
 let m=document.getElementById('l1').value.trim();
 let p=document.getElementById('l2').value.trim();
 let u=JSON.parse(localStorage.getItem('u')||'null');
-if(!u){alert('Pela Register Karo');show('reg');return}
+if(!u){alert('Pela Register');show('reg');return}
 if(u.m==m && u.p==p){
 document.getElementById('uname').innerText='Hi, '+u.n;
 document.getElementById('bal').innerText=balance;
-document.getElementById('bal2').innerText=balance;
 show('home');
-}else{alert('Password Khoto Che');}
+}else{alert('Password Khoto');}
 }
 function openJili(){
- // Paisa JILI ma transfer thaya
- document.getElementById('bal').innerText=balance;
- document.getElementById('bal2').innerText=balance;
- document.getElementById('jili-frame').src="https://jiligames.com/";
- show('jili');
+// 1. Paisa transfer no logic
+localStorage.setItem('jili_balance', balance);
+alert('₹'+balance+' JILI Wallet ma transfer thai gaya! Have Game khulse.');
+
+// 2. FIX - Iframe na badle direct open karvu
+window.open("https://jiligames.com/", "_blank");
+// Jo same j window ma kholvu hoy to aa line use kar:
+// window.location.href = "https://jiligames.com/";
 }
 </script>
 </body>
+ </html>
                                                         </html>
