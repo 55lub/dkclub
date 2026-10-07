@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Super Gold - By Gold Spin Games</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
+body{background:#000;color:#fff;display:flex;justify-content:center;align-items:center;min-height:100vh}
+.box{width:360px;background:#10221c;border:2px solid gold;border-radius:22px;padding:18px;text-align:center}
+.top{display:flex;justify-content:space-between;color:gold;font-weight:700;margin-bottom:12px}
+.reels{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;background:#050a08;padding:14px;border-radius:16px;border:1px solid #234a3d}
+.reel{height:80px;background:#11251f;border-radius:12px;display:flex;justify-content:center;align-items:center;font-size:38px;border:1px solid #2a5a4b}
+.info{margin:14px 0;color:#8aa89c;font-size:14px}
+.btn{width:100%;padding:16px;background:linear-gradient(90deg,gold,#ffcc00);border:none;border-radius:30px;font-weight:900;font-size:18px;letter-spacing:1px}
+.btn:active{transform:scale(0.97)}
+.win{color:#00ff88;font-weight:900;margin-top:10px;height:22px}
+.small{font-size:11px;color:#555;margin-top:10px}
+</style>
+</head>
+<body>
+<div class="box">
+  <div class="top"><span>GOLD SPIN GAMES</span><span id="bal">₹ 10000</span></div>
+  <div class="reels">
+    <div class="reel" id="r1">💎</div>
+    <div class="reel" id="r2">💎</div>
+    <div class="reel" id="r3">💎</div>
+    <div class="reel" id="r4">7️⃣</div>
+    <div class="reel" id="r5">7️⃣</div>
+    <div class="reel" id="r6">7️⃣</div>
+    <div class="reel" id="r7">🍀</div>
+    <div class="reel" id="r8">🍀</div>
+    <div class="reel" id="r9">🍀</div>
+  </div>
+  <div class="info">3 same symbol = WIN ₹500</div>
+  <div class="win" id="winMsg"></div>
+  <button class="btn" onclick="spin()">SPIN - ₹100</button>
+  <div class="small">This is a DEMO game by your company. No real money.</div>
+</div>
+
+<script>
+let balance = 10000;
+const symbols = ["💎","7️⃣","🍀","🔔","⭐","💰"];
+function spin(){
+ if(balance < 100) { document.getElementById('winMsg').innerText="Balance Khatam!"; return; }
+ balance -= 100;
+ document.getElementById('bal').innerText="₹ "+balance;
+ document.getElementById('winMsg').innerText="";
+
+ // animation
+ let count=0;
+ let timer = setInterval(()=>{
+   for(let i=1;i<=9;i++) document.getElementById('r'+i).innerText = symbols[Math.floor(Math.random()*symbols.length)];
+   count++;
+   if(count>15){
+     clearInterval(timer);
+     checkWin();
+   }
+ },80);
+}
+function checkWin(){
+ let reels=[];
+ for(let i=1;i<=9;i++) reels.push(document.getElementById('r'+i).innerText);
+ // simple check: first row same
+ if(reels[0]==reels[1] && reels[1]==reels[2]){
+   balance+=500;
+   document.getElementById('winMsg').innerText="🎉 JACKPOT WIN ₹500!";
+   document.getElementById('bal').innerText="₹ "+balance;
+ } else if(reels[3]==reels[4] && reels[4]==reels[5]){
+   balance+=500;
+   document.getElementById('winMsg').innerText="🎉 WIN ₹500!";
+   document.getElementById('bal').innerText="₹ "+balance;
+ } else {
+   document.getElementById('winMsg').innerText="Try Again!";
+ }
+}
+</script>
+</body>
+  </html>
