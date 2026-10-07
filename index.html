@@ -1,9 +1,44 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>DmFirst FINAL</title><style>
-*{margin:0;padding:0;box-sizing:border-box}body{background:#000;display:flex;justify-content:center;font-family:Arial}
-.phone{width:100%;max-width:420px;height:100vh;background:#080f0d;position:relative;overflow:hidden;display:flex;flex-direction:column}
-.screen{display:none;flex:1;overflow-y:auto;background:#0b1a15}.screen.active{display:block}.screen img{width:100%;display:block}
-.bottom{height:62px;background:#0c1f1a;display:flex;justify-content:space-around;align-items:center;border-top:1px solid #1e3d32}
-.nav{flex:1;text-align:center;color:#5a7a6e;font-size:10px;cursor:pointer}.nav.active{color:#d4b072}
-.center{width:54px;height:54px;background:radial-gradient(#ffdd55,#ff8800);border-radius:50%;margin:-20px auto 2px;display:flex;justify-content:center;align-items:center;border:3px solid #0c1f1a}
-</style></head><body><div class="phone">
-<div id="s-home" class="screen active"><img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCAO4AUADASIAAhEBAxEB/8QAHAABAAEFAQEAAAAAAAAAAAAAAAECAwQFBgcI/8QASxABAAIBAwIEAwYEBAQEBwAAAAECAwQFEQYSITFBB0ETIlFhcaEygZGhMrHB0RQjQlJicrLxM0NiksLh8RU0Q5L/xAAaAQEAAwEBAQAAAAAAAAAAAAAAAQIDBAUG/8QAJhEBAQACAgICAQMEAwAAAAAAAAAAAQIRAzESQVHwAxIyYaH/2gAMAwE
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>DmFirst</title>
+<style>
+body{background:#000;margin:0;display:flex;justify-content:center}
+.phone{width:100%;max-width:420px;height:100vh;background:#080f0d;position:relative;overflow:hidden}
+.screen{display:none;height:100%;overflow-y:auto;padding-bottom:65px}
+.screen.active{display:block}
+.screen img{width:100%;display:block}
+.bottom{position:absolute;bottom:0;left:0;width:100%;height:62px;background:#0c1f1a;display:flex;justify-content:space-around;align-items:center;border-top:1px solid #1e3d32}
+.nav{flex:1;text-align:center;color:#5a7a6e;font-size:10px}
+.nav.active{color:#d4b072}
+.center{width:50px;height:50px;background:radial-gradient(#ffdd55,#ff8800);border-radius:50%;margin:-18px auto 2px;display:flex;justify-content:center;align-items:center;border:3px solid #0c1f1a}
+</style>
+</head>
+<body>
+<div class="phone">
+<div id="s-home" class="screen active"><img src="home_ultra.jpg"></div>
+<div id="s-activity" class="screen"><img src="activity_ultra.jpg"></div>
+<div id="s-agency" class="screen"><img src="agency_ultra.jpg"></div>
+<div id="s-account" class="screen"><img src="account_ultra.jpg"></div>
+
+<div class="bottom">
+<div class="nav active" id="n-home" onclick="go('home')">🏠<br>Home</div>
+<div class="nav" id="n-activity" onclick="go('activity')">🎁<br>Activity</div>
+<div class="nav" onclick="go('home')"><div class="center">🎡</div>Get ₹500</div>
+<div class="nav" id="n-agency" onclick="go('agency')">👥<br>Promotion</div>
+<div class="nav" id="n-account" onclick="go('account')">👤<br>Account</div>
+</div>
+</div>
+
+<script>
+function go(t){
+document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+document.getElementById('s-'+t).classList.add('active');
+document.querySelectorAll('.nav').forEach(n=>n.classList.remove('active'));
+let el=document.getElementById('n-'+t);
+if(el)el.classList.add('active');
+}
+</script>
+</body>
+  </html>
