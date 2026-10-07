@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Final Games - Fixed</title>
+<title>Final Games - JILI Lobby</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
 body{background:#000;display:flex;justify-content:center}
-.phone{width:100%;max-width:400px;background:#07130f;min-height:100vh;position:relative}
+.phone{width:100%;max-width:400px;background:#07130f;min-height:100vh}
 .page{display:none;padding:15px;min-height:100vh}
 .page.active{display:block}
-h2{color:gold;text-align:center;margin:20px 0}
+h2{color:gold;text-align:center;margin:15px 0}
 input{width:100%;height:50px;background:#11251f;border:1px solid #2a4a3f;border-radius:12px;color:#fff;padding:0 15px;margin:8px 0}
 .btn{width:100%;height:52px;background:gold;border:none;border-radius:30px;font-weight:900;font-size:17px;margin-top:12px;cursor:pointer}
 .top{background:#0f261e;padding:12px;border-radius:12px;display:flex;justify-content:space-between;color:#fff;margin-bottom:15px;border:1px solid #234a3d}
@@ -21,12 +21,20 @@ input{width:100%;height:50px;background:#11251f;border:1px solid #2a4a3f;border-
 #card2{background:linear-gradient(135deg,#00c6ff,#0072ff)}
 #card3{background:linear-gradient(135deg,#a100ff,#ff00c8)}
 #card4{background:linear-gradient(135deg,#00ff88,#00a651)}
-.notice{background:#11251f;border:1px solid #2a4a3f;padding:10px;border-radius:10px;color:#8aa89c;font-size:12px;text-align:center;margin-top:15px}
+
+/* JILI GAMES CSS */
+.jili-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+.jili-item{background:#11251f;border:1px solid #2a4a3f;border-radius:15px;padding:10px;text-align:center;color:#fff;cursor:pointer}
+.jili-item img{width:100%;height:70px;object-fit:cover;border-radius:10px;background:#000}
+.jili-item p{font-size:12px;margin-top:6px;font-weight:700}
+.back-bar{background:#0f261e;color:#fff;padding:12px;display:flex;justify-content:space-between;align-items:center;margin:-15px -15px 15px -15px}
+.game-play{background:#000;height:calc(100vh - 60px);display:flex;align-items:center;justify-content:center;color:#fff;flex-direction:column;border-radius:15px}
 </style>
 </head>
 <body>
 <div class="phone">
 
+<!-- REGISTER -->
 <div id="p-reg" class="page active">
 <h2>REGISTER</h2>
 <input id="r1" placeholder="Name">
@@ -36,6 +44,7 @@ input{width:100%;height:50px;background:#11251f;border:1px solid #2a4a3f;border-
 <p style="color:#aaa;text-align:center;margin-top:15px;font-size:13px" onclick="show('login')">Login? <b style="color:gold">Login</b></p>
 </div>
 
+<!-- LOGIN -->
 <div id="p-login" class="page">
 <h2>LOGIN</h2>
 <input id="l1" placeholder="Mobile">
@@ -44,17 +53,51 @@ input{width:100%;height:50px;background:#11251f;border:1px solid #2a4a3f;border-
 <p style="color:#aaa;text-align:center;margin-top:15px;font-size:13px" onclick="show('reg')">New? <b style="color:gold">Register</b></p>
 </div>
 
+<!-- HOME -->
 <div id="p-home" class="page">
 <div class="top"><div id="uname">Hi Player</div><div>₹<b id="bal">5000</b></div></div>
-<h2 style="margin:10px 0">SELECT PROVIDER</h2>
+<h2>SELECT PROVIDER</h2>
 <div class="grid">
-<div class="game-card" id="card1"><span>🎟️</span>LOTTERY</div>
-<div class="game-card" id="card2" onclick="openJili()"><span>🎰</span>JILI</div>
+<div class="game-card" id="card1" onclick="alert('LOTTERY Coming Soon')"><span>🎟️</span>LOTTERY</div>
+<div class="game-card" id="card2" onclick="openJiliLobby()"><span>🎰</span>JILI</div>
 <div class="game-card" id="card3"><span>🎲</span>JDB</div>
 <div class="game-card" id="card4"><span>🐯</span>PG</div>
 </div>
-<div class="notice">JILI par click karo etle Balance JILI Wallet ma jase ane Game khul se</div>
-<button class="btn" style="background:#11251f;color:#fff;border:1px solid #333;margin-top:20px" onclick="show('login')">Logout</button>
+</div>
+
+<!-- JILI LOBBY - BADHI GAMES -->
+<div id="p-jili" class="page">
+<div class="back-bar">
+<div onclick="show('home')" style="cursor:pointer">← Back</div>
+<div>Balance: ₹<b id="bal2">5000</b></div>
+</div>
+<h2>JILI - ALL GAMES</h2>
+<div class="jili-grid">
+<div class="jili-item" onclick="playGame('Super Ace')"><img src="https://via.placeholder.com/100x70/0072ff/fff?text=SA"><p>Super Ace</p></div>
+<div class="jili-item" onclick="playGame('Money Coming')"><img src="https://via.placeholder.com/100x70/ff5e00/fff?text=MC"><p>Money Coming</p></div>
+<div class="jili-item" onclick="playGame('Fortune Gems')"><img src="https://via.placeholder.com/100x70/00a651/fff?text=FG"><p>Fortune Gems</p></div>
+<div class="jili-item" onclick="playGame('Wild Ace')"><img src="https://via.placeholder.com/100x70/a100ff/fff?text=WA"><p>Wild Ace</p></div>
+<div class="jili-item" onclick="playGame('Boxing King')"><img src="https://via.placeholder.com/100x70/ff0000/fff?text=BK"><p>Boxing King</p></div>
+<div class="jili-item" onclick="playGame('Golden Bank')"><img src="https://via.placeholder.com/100x70/gold/000?text=GB"><p>Golden Bank</p></div>
+<div class="jili-item" onclick="playGame('Charge Buffalo')"><img src="https://via.placeholder.com/100x70/654321/fff?text=CB"><p>Charge Buffalo</p></div>
+<div class="jili-item" onclick="playGame('Ali Baba')"><img src="https://via.placeholder.com/100x70/00c6ff/fff?text=AB"><p>Ali Baba</p></div>
+<div class="jili-item" onclick="playGame('Crazy 777')"><img src="https://via.placeholder.com/100x70/ff00c8/fff?text=777"><p>Crazy 777</p></div>
+</div>
+</div>
+
+<!-- GAME PLAY PAGE -->
+<div id="p-play" class="page" style="padding:0">
+<div class="back-bar" style="margin:0">
+<div onclick="show('jili')" style="cursor:pointer">← Back to JILI</div>
+<div id="gname" style="color:gold">Game</div>
+</div>
+<div class="game-play">
+<div style="font-size:60px" id="gicon">🎰</div>
+<h2 id="gtxt" style="color:gold;margin-top:10px">Super Ace</h2>
+<p style="color:#8aa89c;font-size:13px;margin-top:5px">Balance: ₹<span id="bal3">5000</span> | JILI Wallet</p>
+<button class="btn" style="width:150px;margin-top:20px" onclick="alert('SPIN! Game Started - Paisa JILI ma j che')">SPIN</button>
+<p style="font-size:11px;color:#555;margin-top:15px;text-align:center;padding:0 20px">Ahi tamaro real JILI game load thase.<br>API key thi connect kari sako cho.</p>
+</div>
 </div>
 
 </div>
@@ -80,21 +123,29 @@ let u=JSON.parse(localStorage.getItem('u')||'null');
 if(!u){alert('Pela Register');show('reg');return}
 if(u.m==m && u.p==p){
 document.getElementById('uname').innerText='Hi, '+u.n;
-document.getElementById('bal').innerText=balance;
+updateBal();
 show('home');
 }else{alert('Password Khoto');}
 }
-function openJili(){
-// 1. Paisa transfer no logic
+function updateBal(){
+document.getElementById('bal').innerText=balance;
+document.getElementById('bal2').innerText=balance;
+document.getElementById('bal3').innerText=balance;
+}
+function openJiliLobby(){
+// Paisa JILI ma transfer
 localStorage.setItem('jili_balance', balance);
-alert('₹'+balance+' JILI Wallet ma transfer thai gaya! Have Game khulse.');
-
-// 2. FIX - Iframe na badle direct open karvu
-window.open("https://jiligames.com/", "_blank");
-// Jo same j window ma kholvu hoy to aa line use kar:
-// window.location.href = "https://jiligames.com/";
+updateBal();
+show('jili');
+}
+function playGame(name){
+document.getElementById('gtxt').innerText=name;
+document.getElementById('gname').innerText=name;
+document.getElementById('bal3').innerText=balance;
+show('play');
+// Ahi tamaro real game API lagse - hve demo che
+console.log(name + " Game Open - Balance: " + balance);
 }
 </script>
 </body>
  </html>
-                                                        </html>
