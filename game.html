@@ -2,57 +2,47 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Super Gold</title>
+<title>My Game Upload</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
-body{background:#000;color:#fff;display:flex;justify-content:center;align-items:center;min-height:100vh}
-.box{width:360px;background:#10221c;border:2px solid gold;border-radius:22px;padding:18px;text-align:center}
-.top{display:flex;justify-content:space-between;color:gold;font-weight:700;margin-bottom:12px}
-.reels{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;background:#050a08;padding:14px;border-radius:16px}
-.reel{height:75px;background:#fff;border-radius:12px;display:flex;justify-content:center;align-items:center;border:1px solid gold}
-.reel img{width:50px;height:50px}
-.btn{width:100%;padding:16px;background:gold;border:none;border-radius:30px;font-weight:900;font-size:18px;margin-top:14px}
-.win{color:#00ff88;font-weight:900;margin-top:10px;height:22px}
+body{background:#000;display:flex;justify-content:center;align-items:center;min-height:100vh}
+.box{width:350px;background:#10221c;border:2px solid gold;border-radius:20px;padding:15px;text-align:center;color:#fff}
+.reels{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin:12px 0}
+.reel{height:70px;border-radius:12px;background:#fff;display:flex;justify-content:center;align-items:center;overflow:hidden;border:1px solid gold}
+.reel img{width:100%;height:100%;object-fit:cover}
+.btn{width:100%;padding:12px;background:gold;border:none;border-radius:30px;font-weight:900;margin-top:8px}
+input{margin:8px 0;color:#fff}
 </style>
 </head>
 <body>
 <div class="box">
-  <div class="top"><span>GOLD SPIN GAMES</span><span id="bal">₹ 10000</span></div>
-  <div class="reels">
-    <div class="reel"><img id="r1" src="https://cdn-icons-png.flaticon.com/512/2583/2583344.png"></div>
-    <div class="reel"><img id="r2" src="https://cdn-icons-png.flaticon.com/512/2583/2583344.png"></div>
-    <div class="reel"><img id="r3" src="https://cdn-icons-png.flaticon.com/512/2583/2583344.png"></div>
-    <div class="reel"><img id="r4" src="https://cdn-icons-png.flaticon.com/512/138/138292.png"></div>
-    <div class="reel"><img id="r5" src="https://cdn-icons-png.flaticon.com/512/138/138292.png"></div>
-    <div class="reel"><img id="r6" src="https://cdn-icons-png.flaticon.com/512/138/138292.png"></div>
-    <div class="reel"><img id="r7" src="https://cdn-icons-png.flaticon.com/512/415/415102.png"></div>
-    <div class="reel"><img id="r8" src="https://cdn-icons-png.flaticon.com/512/415/415102.png"></div>
-    <div class="reel"><img id="r9" src="https://cdn-icons-png.flaticon.com/512/415/415102.png"></div>
-  </div>
-  <div class="win" id="winMsg">SPIN dabavo</div>
-  <button class="btn" onclick="spin()">SPIN - ₹100</button>
+<div style="color:gold;font-weight:700">GALLERY THI PHOTO NAKHO</div>
+<input type="file" id="file1" accept="image/*">
+<div class="reels">
+<div class="reel"><img id="r1" src=""></div>
+<div class="reel"><img id="r2" src=""></div>
+<div class="reel"><img id="r3" src=""></div>
+<div class="reel"><img id="r4" src=""></div>
+<div class="reel"><img id="r5" src=""></div>
+<div class="reel"><img id="r6" src=""></div>
+<div class="reel"><img id="r7" src=""></div>
+<div class="reel"><img id="r8" src=""></div>
+<div class="reel"><img id="r9" src=""></div>
+</div>
+<button class="btn" onclick="spin()">SPIN</button>
 </div>
 <script>
-let balance=10000;
-const pics=[
-"https://cdn-icons-png.flaticon.com/512/2583/2583344.png",
-"https://cdn-icons-png.flaticon.com/512/138/138292.png",
-"https://cdn-icons-png.flaticon.com/512/415/415102.png",
-"https://cdn-icons-png.flaticon.com/512/891/891462.png"
-];
-function spin(){
- balance-=100; document.getElementById('bal').innerText="₹ "+balance;
- document.getElementById('winMsg').innerText="";
- let c=0; let t=setInterval(()=>{
-  for(let i=1;i<=9;i++) document.getElementById('r'+i).src=pics[Math.floor(Math.random()*pics.length)];
-  c++; if(c>15){clearInterval(t); checkWin();}
- },80);
+let selImg="";
+document.getElementById('file1').onchange=function(e){
+ let reader=new FileReader();
+ reader.onload=function(ev){selImg=ev.target.result; for(let i=1;i<=9;i++) document.getElementById('r'+i).src=selImg;}
+ reader.readAsDataURL(e.target.files[0]);
 }
-function checkWin(){
- let a=document.getElementById('r1').src, b=document.getElementById('r2').src, c=document.getElementById('r3').src;
- if(a==b && b==c){balance+=500; document.getElementById('bal').innerText="₹ "+balance; document.getElementById('winMsg').innerText="🎉 WIN ₹500";}
- else{document.getElementById('winMsg').innerText="Try Again";}
+function spin(){
+ if(!selImg){alert("Pela upar thi gallery mathi photo pasand karo");return;}
+ // shuffle same photo for demo
+ for(let i=1;i<=9;i++) document.getElementById('r'+i).src=selImg;
 }
 </script>
 </body>
-  </html>
+                    </html>
