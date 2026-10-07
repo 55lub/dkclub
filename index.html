@@ -1,35 +1,62 @@
-<!<!DOCTYPE html>
-<html>
-<head><title>Raja Club</title><meta name="viewport" content="width=device-width, initial-scale=1"></head>
-<body style="background:#111;color:#fff;text-align:center;font-family:sans-serif;padding:20px">
-  <h1 style="color:gold">RAJA QUIZ CLUB</h1>
-  <h2 id="bal">Balance: 100</h2>
-  <div style="background:#222;padding:20px;border-radius:15px;margin-top:20px">
-    <h2 id="q">Loading...</h2>
-    <div id="opts"></div>
+<!DOCTYPE html><html><head><title>Raja Club Pro</title><meta name="viewport" content="width=device-width,initial-scale=1">
+<style>body{background:#111;color:#fff;font-family:sans-serif;text-align:center;padding:15px}input,button{padding:12px;margin:5px;width:85%;border-radius:10px;border:none;font-size:16px}button{background:gold;font-weight:bold}</style>
+</head><body>
+<h1 style="color:gold">RAJA CLUB PRO</h1>
+<div id="auth">
+  <input id="phone" placeholder="Mobile Number Nakh">
+  <input id="pass" type="password" placeholder="Password">
+  <button onclick="register()">REGISTER</button>
+  <button onclick="login()" style="background:#fff">LOGIN</button>
+</div>
+<div id="game" style="display:none">
+  <h3 id="uid"></h3><h3 id="bal"></h3>
+  <p>Refer Link: <span id="reflink"></span></p>
+  <div style="background:#222;padding:15px;border-radius:10px">
+    <h2 id="q"></h2><div id="opts"></div>
   </div>
-  <script>
-    const QS = [
-      {q:"5 + 5 = ?", opt:["9","10","11"], ans:"10"},
-      {q:"India ni Capital?", opt:["Delhi","Mumbai","Surat"], ans:"Delhi"},
-      {q:"Gujarat no famous dance?", opt:["Garba","Bhangra"], ans:"Garba"}
-    ];
-    let bal=100, curr;
-    function newQ(){
-      curr = QS[Math.floor(Math.random()*QS.length)];
-      document.getElementById("q").innerText=curr.q;
-      document.getElementById("opts").innerHTML="";
-      curr.opt.forEach(o=>{
-        let b=document.createElement("button");
-        b.innerText=o; b.style="padding:15px;margin:10px;width:80%;font-size:18px;border-radius:10px";
-        b.onclick=()=>play(o); document.getElementById("opts").appendChild(b);
-      });
-    }
-    function play(o){
-      if(o===curr.ans){ bal+=8; alert("WIN 🎉"); } else { bal-=10; alert("LOSS"); }
-      document.getElementById("bal").innerText="Balance: "+bal; newQ();
-    }
-    newQ();
-  </script>
-</body>
-</html>￼Enter
+  <hr>
+  <input id="reAmt" placeholder="Recharge Amount (min 100)"><button onclick="recharge()">RECHARGE</button>
+  <input id="wdAmt" placeholder="Withdraw Amount (min 110)"><input id="upi" placeholder="Taru UPI ID"><button onclick="withdraw()">WITHDRAWAL REQUEST</button>
+  <p id="msg"></p>
+</div>
+<script>
+let users=JSON.parse(localStorage.getItem("rc_users")||"{}"), bal=100, uid=null, curr;
+const QS=[{q:"5+5=?",opt:["9","10","11"],ans:"10"},{q:"India Capital?",opt:["Delhi","Mumbai"],ans:"Delhi"},{q:"10x2=?",opt:["20","22"],ans:"20"}];
+function genUID(){return "RC"+Math.floor(100000+Math.random()*900000)}
+function register(){
+  let p=phone.value, ps=pass.value; if(!p||!ps) return alert("Number/Password nakh");
+  if(users[p]) return alert("Already Registered, Login kar");
+  let newUid=genUID(); let refBy=new URLSearchParams(location.search).get("ref");
+  users[p]={uid:newUid, pass:ps, bal:100, ref:refBy}; localStorage.setItem("rc_users",JSON.stringify(users));
+  alert("Register Thai gayu UID: "+newUid); login();
+}
+function login(){
+  let p=phone.value, ps=pass.value; if(!users[p]||users[p].pass!=ps) return alert("Login Fail");
+  uid=users[p].uid; bal=users[p].bal; localStorage.setItem("rc_curr",p);
+  auth.style.display="none"; game.style.display="block";
+  uidEl(); newQ();
+}
+function uidEl(){
+  document.getElementById("uid").innerText="UID: "+uid+" | Bal: "+bal;
+  document.getElementById("bal").innerText="Balance: ₹"+bal;
+  document.getElementById("reflink").innerText=location.origin+"/?ref="+uid;
+}
+function newQ(){
+  curr=QS[Math.floor(Math.random()*QS.length)]; q.innerText=curr.q; opts.innerHTML="";
+  curr.opt.forEach(o=>{let b=document.createElement("button"); b.innerText=o; b.onclick=()=>play(o); opts.appendChild(b);});
+}
+function play(o){
+  let p=localStorage.getItem("rc_curr"); if(o==curr.ans) users[p].bal+=8; else users[p].bal-=10;
+  bal=users[p].bal; localStorage.setItem("rc_users",JSON.stringify(users)); uidEl(); newQ();
+}
+function recharge(){
+  let amt=Number(reAmt.value); if(amt<100) return alert("Min 100");
+  window.open(`upi://pay?pa=YOUR_UPI_ID@upi&pn=RajaClub&am=${amt}&cu=INR`,"_blank");
+  document.getElementById("msg").innerText="Recharge karya pachi 5 min ma balance add thase (Manual check)";
+}
+function withdraw(){
+  let amt=Number(wdAmt.value); if(amt<110) return alert("Min 110"); if(amt>bal) return alert("Balance nathi");
+  document.getElementById("msg").innerText="Withdrawal Request Moklai: "+amt+" to "+upi.value+" (Admin approve karse)";
+}
+window.onload=()=>{ let p=localStorage.getItem("rc_curr"); if(p&&users[p]){ phone.value=p; pass.value=users[p].pass; login(); } }
+</script></body></html>
