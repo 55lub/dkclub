@@ -1,0 +1,35 @@
+<!<!DOCTYPE html>
+<html>
+<head><title>Raja Club</title><meta name="viewport" content="width=device-width, initial-scale=1"></head>
+<body style="background:#111;color:#fff;text-align:center;font-family:sans-serif;padding:20px">
+  <h1 style="color:gold">RAJA QUIZ CLUB</h1>
+  <h2 id="bal">Balance: 100</h2>
+  <div style="background:#222;padding:20px;border-radius:15px;margin-top:20px">
+    <h2 id="q">Loading...</h2>
+    <div id="opts"></div>
+  </div>
+  <script>
+    const QS = [
+      {q:"5 + 5 = ?", opt:["9","10","11"], ans:"10"},
+      {q:"India ni Capital?", opt:["Delhi","Mumbai","Surat"], ans:"Delhi"},
+      {q:"Gujarat no famous dance?", opt:["Garba","Bhangra"], ans:"Garba"}
+    ];
+    let bal=100, curr;
+    function newQ(){
+      curr = QS[Math.floor(Math.random()*QS.length)];
+      document.getElementById("q").innerText=curr.q;
+      document.getElementById("opts").innerHTML="";
+      curr.opt.forEach(o=>{
+        let b=document.createElement("button");
+        b.innerText=o; b.style="padding:15px;margin:10px;width:80%;font-size:18px;border-radius:10px";
+        b.onclick=()=>play(o); document.getElementById("opts").appendChild(b);
+      });
+    }
+    function play(o){
+      if(o===curr.ans){ bal+=8; alert("WIN 🎉"); } else { bal-=10; alert("LOSS"); }
+      document.getElementById("bal").innerText="Balance: "+bal; newQ();
+    }
+    newQ();
+  </script>
+</body>
+</html>￼Enter
