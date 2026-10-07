@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Final Games - JILI Real</title>
+<title>Final Games - JILI Real Photos</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
 body{background:#000;display:flex;justify-content:center}
@@ -14,20 +14,18 @@ h2{color:gold;text-align:center;margin:15px 0}
 input{width:100%;height:50px;background:#11251f;border:1px solid #2a4a3f;border-radius:12px;color:#fff;padding:0 15px;margin:8px 0}
 .btn{width:100%;height:52px;background:gold;border:none;border-radius:30px;font-weight:900;font-size:17px;margin-top:12px;cursor:pointer}
 .top{background:#0f261e;padding:12px;border-radius:12px;display:flex;justify-content:space-between;color:#fff;margin-bottom:15px;border:1px solid #234a3d}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:15px;margin-top:10px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:15px}
 .game-card{height:130px;border-radius:20px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;font-weight:900;font-size:18px;cursor:pointer}
 #card1{background:linear-gradient(135deg,#ff5e00,#ff9a00)}
 #card2{background:linear-gradient(135deg,#00c6ff,#0072ff)}
 #card3{background:linear-gradient(135deg,#a100ff,#ff00c8)}
 #card4{background:linear-gradient(135deg,#00ff88,#00a651)}
-
-/* JILI REAL PHOTO CSS */
-.jili-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
-.jili-item{background:linear-gradient(180deg,#1a3a2f,#0f261e);border:1px solid #2a4a3f;border-radius:16px;padding:8px;text-align:center;color:#fff;cursor:pointer;box-shadow:0 4px 10px rgba(0,0,0,0.5)}
-.jili-item img{width:100%;height:85px;object-fit:cover;border-radius:12px;border:1px solid #3a5a4f}
-.jili-item p{font-size:11px;margin-top:6px;font-weight:800;color:#ffd700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.jili-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.jili-item{background:#11251f;border:1px solid #2a4a3f;border-radius:18px;padding:8px;text-align:center;color:#fff;cursor:pointer;overflow:hidden}
+.jili-item img{width:100%;height:110px;object-fit:cover;border-radius:12px;background:#000;display:block}
+.jili-item p{font-size:12px;margin-top:7px;font-weight:800;color:#ffd700}
 .back-bar{background:#0f261e;color:#fff;padding:12px;display:flex;justify-content:space-between;align-items:center;margin:-15px -15px 15px -15px;border-bottom:1px solid #2a4a3f}
-.game-play{background:radial-gradient(circle at top,#1a3a2f,#000);height:calc(100vh - 60px);display:flex;align-items:center;justify-content:center;color:#fff;flex-direction:column;border-radius:15px;padding:20px;text-align:center}
+.game-play{background:radial-gradient(circle at top,#1a3a2f,#000);min-height:calc(100vh - 60px);display:flex;align-items:center;justify-content:center;flex-direction:column;border-radius:15px;padding:20px;text-align:center;color:#fff}
 </style>
 </head>
 <body>
@@ -37,14 +35,14 @@ input{width:100%;height:50px;background:#11251f;border:1px solid #2a4a3f;border-
 <h2>REGISTER</h2>
 <input id="r1" placeholder="Name"><input id="r2" placeholder="Mobile"><input id="r3" type="password" placeholder="Password">
 <button class="btn" onclick="reg()">REGISTER</button>
-<p style="color:#aaa;text-align:center;margin-top:15px;font-size:13px" onclick="show('login')">Login? <b style="color:gold">Login</b></p>
+<p style="color:#aaa;text-align:center;margin-top:15px" onclick="show('login')">Login? <b style="color:gold">Login</b></p>
 </div>
 
 <div id="p-login" class="page">
 <h2>LOGIN</h2>
 <input id="l1" placeholder="Mobile"><input id="l2" type="password" placeholder="Password">
 <button class="btn" onclick="log()">LOGIN</button>
-<p style="color:#aaa;text-align:center;margin-top:15px;font-size:13px" onclick="show('reg')">New? <b style="color:gold">Register</b></p>
+<p style="color:#aaa;text-align:center;margin-top:15px" onclick="show('reg')">New? <b style="color:gold">Register</b></p>
 </div>
 
 <div id="p-home" class="page">
@@ -58,28 +56,28 @@ input{width:100%;height:50px;background:#11251f;border:1px solid #2a4a3f;border-
 </div>
 </div>
 
+<!-- JILI LOBBY WITH REAL PHOTOS -->
 <div id="p-jili" class="page">
-<div class="back-bar"><div onclick="show('home')">← Back</div><div>₹<b id="bal2">5000</b></div></div>
+<div class="back-bar"><div onclick="show('home')" style="cursor:pointer">← Back</div><div>₹<b id="bal2">5000</b></div></div>
 <h2>JILI - ALL GAMES</h2>
 <div class="jili-grid">
-<div class="jili-item" onclick="playGame('Super Ace')"><img src="https://i.ibb.co/3YgWk6v/super-ace.jpg"><p>Super Ace</p></div>
-<div class="jili-item" onclick="playGame('Money Coming')"><img src="https://i.ibb.co/7rJmT6y/money-coming.jpg"><p>Money Coming</p></div>
-<div class="jili-item" onclick="playGame('Fortune Gems')"><img src="https://i.ibb.co/k6gHq5X/fortune-gems.jpg"><p>Fortune Gems</p></div>
-<div class="jili-item" onclick="playGame('Wild Ace')"><img src="https://i.ibb.co/N2Mf8fS/wild-ace.jpg"><p>Wild Ace</p></div>
-<div class="jili-item" onclick="playGame('Boxing King')"><img src="https://i.ibb.co/jkW8q8v/boxing-king.jpg"><p>Boxing King</p></div>
-<div class="jili-item" onclick="playGame('Golden Bank')"><img src="https://i.ibb.co/LQv8yFj/golden-bank.jpg"><p>Golden Bank</p></div>
-<div class="jili-item" onclick="playGame('Charge Buffalo')"><img src="https://i.ibb.co/fGqKzX7/charge-buffalo.jpg"><p>Charge Buffalo</p></div>
-<div class="jili-item" onclick="playGame('Crazy 777')"><img src="https://i.ibb.co/0jXy3K8/crazy-777.jpg"><p>Crazy 777</p></div>
-<div class="jili-item" onclick="playGame('Ali Baba')"><img src="https://i.ibb.co/7Qk5gYf/ali-baba.jpg"><p>Ali Baba</p></div>
+<div class="jili-item" onclick="playGame(this,'Super Ace')"><img src="https://www.casinoplus.com.ph/cp-games/asset/image/original/gameSectionArticle/mainBackgroundImageH5/20241118095524mDukUZ.webp"><p>Super Ace</p></div>
+<div class="jili-item" onclick="playGame(this,'Money Coming')"><img src="https://www.casinoplus.com.ph/cp-games/asset/image/original/gameSectionArticle/mainBackgroundImageH5/20241202083452P7lzOk.webp"><p>Money Coming</p></div>
+<div class="jili-item" onclick="playGame(this,'Fortune Gems')"><img src="https://www.casinoplus.com.ph/cp-games/asset/image/original/gameSectionArticle/mainBackgroundImageH5/20240827024532m6vRMX.webp"><p>Fortune Gems</p></div>
+<div class="jili-item" onclick="playGame(this,'Wild Ace')"><img src="https://www.casinoplus.com.ph/cp-games/asset/image/original/gameSectionArticle/mainBackgroundImageH5/20241108080524nXR8cx.webp"><p>Wild Ace</p></div>
+<div class="jili-item" onclick="playGame(this,'Crazy 777')"><img src="https://www.casinoplus.com.ph/cp-games/asset/image/original/gameSectionArticle/mainBackgroundImageH5/20240910045003Mbm8wY.webp"><p>Crazy 777</p></div>
+<div class="jili-item" onclick="playGame(this,'Fortune Gems 2')"><img src="https://www.casinoplus.com.ph/cp-games/asset/image/original/gameSectionArticle/mainBackgroundImageH5/20241023064303awWvbm.webp"><p>Fortune Gems 2</p></div>
+<div class="jili-item" onclick="playGame(this,'Mega Ace')"><img src="https://www.casinoplus.com.ph/cp-games/asset/image/original/gameSectionArticle/mainBackgroundImageH5/20241025061335E7uKgX.webp"><p>Mega Ace</p></div>
+<div class="jili-item" onclick="playGame(this,'Super Ace Deluxe')"><img src="https://www.casinoplus.com.ph/cp-games/asset/image/original/gameSectionArticle/mainBackgroundImageH5/202502050658323rDqfX.webp"><p>Super Ace Deluxe</p></div>
 </div>
 </div>
 
 <div id="p-play" class="page" style="padding:0">
 <div class="back-bar" style="margin:0"><div onclick="show('jili')">← JILI Lobby</div><div id="gname" style="color:gold">Game</div></div>
 <div class="game-play">
-<img id="gimg" src="" style="width:180px;height:180px;border-radius:20px;border:2px solid gold;object-fit:cover">
-<h2 id="gtxt" style="margin-top:15px">Super Ace</h2>
-<p style="color:#8aa89c;font-size:13px;margin-top:5px">Balance: ₹<span id="bal3">5000</span> Transfer to JILI Wallet</p>
+<img id="gimg" src="" style="width:220px;height:150px;border-radius:18px;border:2px solid gold;object-fit:cover">
+<h2 id="gtxt" style="margin-top:15px;color:gold">Game</h2>
+<p style="color:#8aa89c;font-size:13px;margin-top:5px">Balance: ₹<span id="bal3">5000</span> | JILI Wallet</p>
 <button class="btn" style="width:160px;margin-top:20px" onclick="spinNow()">SPIN NOW</button>
 </div>
 </div>
@@ -87,23 +85,5 @@ input{width:100%;height:50px;background:#11251f;border:1px solid #2a4a3f;border-
 </div>
 
 <script>
-let balance = 5000;
-let currentImg = "";
-function show(name){document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.getElementById('p-'+name).classList.add('active');}
-function reg(){let n=document.getElementById('r1').value.trim(),m=document.getElementById('r2').value.trim(),p=document.getElementById('r3').value.trim();if(!n||!m||!p){alert('Badhu bharo');return}localStorage.setItem('u',JSON.stringify({n,m,p}));alert('Register OK');show('login');}
-function log(){let m=document.getElementById('l1').value.trim(),p=document.getElementById('l2').value.trim(),u=JSON.parse(localStorage.getItem('u')||'null');if(!u){alert('Pela Register');show('reg');return}if(u.m==m&&u.p==p){document.getElementById('uname').innerText='Hi, '+u.n;updateBal();show('home');}else{alert('Password Khoto');}}
-function updateBal(){document.getElementById('bal').innerText=balance;document.getElementById('bal2').innerText=balance;document.getElementById('bal3').innerText=balance;}
-function openJiliLobby(){localStorage.setItem('jili_balance', balance);updateBal();show('jili');}
-function playGame(name){
-let img = event.currentTarget.querySelector('img').src;
-currentImg = img;
-document.getElementById('gtxt').innerText=name;
-document.getElementById('gname').innerText=name;
-document.getElementById('gimg').src=img;
-document.getElementById('bal3').innerText=balance;
-show('play');
-}
-function spinNow(){if(balance<=0){alert('Balance khatam!');return}balance-=10;updateBal();alert(document.getElementById('gtxt').innerText + ' ma SPIN thai gayu! ₹10 cut thaya');}
-</script>
-</body>
- </html>
+let balance=5000;
+function show(n){document.querySelectorAll('.page').forEach(p=>p.classList.remove
